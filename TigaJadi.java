@@ -14,7 +14,7 @@ public class TigaJadi extends JFrame{
     public TigaJadi() {
     add(canvas);
     setTitle("3 Jadi");
-    setSize(300,300);
+    setSize(350,350);
     setLocationRelativeTo(null);   
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     canvas.addMouseListener(new MouseListener(){
