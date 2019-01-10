@@ -133,6 +133,11 @@ public class TigaJadi extends JFrame{
     };
 
     public void resetGame(){
+        playing = 1;
+        fromRow=-1;
+        fromCol=-1;
+        player1Gacuk=0;
+        player2Gacuk=0;
         playSpace= new int[][]{
             {0,0,0},
             {0,0,0},
