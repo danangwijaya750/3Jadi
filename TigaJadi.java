@@ -11,10 +11,12 @@ public class TigaJadi extends JFrame{
     int player2Gacuk=0;
     int fromRow=-1;
     int fromCol=-1;
+    int playe1Score=0;
+    int playe2Score=0;
     public TigaJadi() {
     add(canvas);
     setTitle("3 Jadi");
-    setSize(350,350);
+    setSize(500,320);
     setLocationRelativeTo(null);   
     setDefaultCloseOperation(EXIT_ON_CLOSE);
     canvas.addMouseListener(new MouseListener(){
@@ -112,11 +114,16 @@ public class TigaJadi extends JFrame{
                 TigaJadiWinner tJadiWinner= new TigaJadiWinner(playing,playSpace);
                 if(tJadiWinner.checkWinner()){
                     JOptionPane.showMessageDialog(null,"pemenang adalah pemain ke-"+playing);
+                    if(playing==1){
+                        playe1Score++;
+                    }else if(playing==2){
+                        playe2Score++;
+                    }
                     resetGame();
                 }
                 else{
                     this.playing = (playing==player2)?player1:player2;
-                    JOptionPane.showMessageDialog(null,"ganti pemain ke-"+this.playing);
+                    // JOptionPane.showMessageDialog(null,"ganti pemain ke-"+this.playing);
             }
         }else{
             System.out.println("not true move");
@@ -148,6 +155,8 @@ public class TigaJadi extends JFrame{
     Canvas canvas = new Canvas() {
 
         public void paint(Graphics g) {
+            Font font = new Font ("Segoe UI", 1, 18);
+            Font fontScore = new Font ("Segoe UI", 1, 15);
             g.setColor(java.awt.Color.decode("#FFFF"));
             g.fillRect(0,0,800,800);
             for(int row = 0; row < playSpace.length; row++) {
@@ -167,6 +176,22 @@ public class TigaJadi extends JFrame{
                     }
                 }
             }
+            g.setFont(font);
+            g.setColor(Color.decode("#FFFFFF"));
+            g.drawString("Permainan 3 Jadi", 310, 50);
+            g.setColor(Color.decode("#FFFFFF"));
+            g.drawString("Player 1 : Putih", 310, 80);
+            g.setColor(Color.decode("#00000"));
+            g.drawString("Player 2 : Hitam", 310, 110);
+            g.setColor(Color.decode("#FFFFFF"));
+            g.drawString("Giliran : Player "+playing, 310, 140);
+            g.setColor(Color.decode("#FFFFFF"));
+            g.drawString("Score :" , 310, 170);
+            g.setFont(fontScore);
+            g.setColor(Color.decode("#FFFFFF"));
+            g.drawString("Player 1: "+playe1Score, 310, 190);
+            g.setColor(Color.decode("#000000"));
+            g.drawString("Player 2: "+playe2Score, 310, 210);
         }
     };
 
